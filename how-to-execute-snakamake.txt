@@ -1,0 +1,48 @@
+bash# execute snakemake in covid-data-processing
+
+If you need to recover any file or directly...
+1. Navigate to covid-data
+2. Type the following 
+	git reset HEAD
+	git checkout .
+	
+To create clean_alldatatracker.csv
+1. Navigate to covid-data-processing
+2. Type the following
+	bash
+	source ~/.basher
+	conda activate covid-proc
+	source ../keys/.env
+	snakemake alldata --cores 1 --forceall
+	snakemake cases --cores 1 --forceall
+
+///
+export BIOBOT_ROOT=/Users/noriko/nori-workspace/biobot-code
+echo $BIOBOT_ROOT
+
+cd ./biobot-code/dslib
+git pull 
+cd ../covid-data
+git pull origin master 
+cd ../covid-data-processing
+git pull origin master
+bash
+
+
+cd ./biobot-code/covid-data
+git pull origin master 
+cd ../covid-data-processing
+git pull origin master
+bash
+
+conda activate covid-proc
+
+source ../../keys/.env
+snakemake alldata --cores 1 --forceall
+snakemake cases --cores 1 --forceall
+
+
+
+///
+git reset --hard origin/master
+git checkout  HEAD~1 2021-06-24_reports_try2_csv-files.ipynb
